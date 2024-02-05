@@ -190,7 +190,5 @@ const productManager = new ProductManager();// defino productManager
     console.log("5🚀Resultado de búsqueda por ID:", productManager.getProductById(1));
     
     productManager.deleteProduct(1);
-    console.log("6🚀Resultado de búsqueda por ID:", productManager.getProductById(1));
-    
 })();
 
