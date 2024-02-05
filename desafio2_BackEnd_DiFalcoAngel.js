@@ -22,7 +22,7 @@ class ProductManager {
           }
         } catch (error) {
           if (error.code === 'ENOENT') { // si el archivo no existe, se crea un archivo vacio
-            
+                                         // con el array vacio
             await fs.promises.writeFile(this.PATH, '', 'utf-8');
             this.products = [];
             return this.products;
@@ -108,13 +108,13 @@ class ProductManager {
     }
 
     async deleteProduct(id) {
-        await this.handleData();
-      
+        await this.handleData(); // Obtiene los datos más recientes
+        
         const productIndex = this.products.findIndex(product => product.id === id);
         if (productIndex !== -1) {
           const deletedProduct = this.products.splice(productIndex, 1)[0]; // Almacena el producto eliminado
           await this.saveData();
-      
+          
           console.log("Se eliminó el siguiente producto:");
           console.log(deletedProduct); // Muestra la información del producto eliminado
       
@@ -188,7 +188,8 @@ const productManager = new ProductManager();// defino productManager
  
     productManager.updateProduct(1,{stock:6});
     console.log("5🚀Resultado de búsqueda por ID:", productManager.getProductById(1));
-    
-    productManager.deleteProduct(145);
+
+    await productManager.deleteProduct(1);
+    await productManager.deleteProduct(1);
 })();
 
