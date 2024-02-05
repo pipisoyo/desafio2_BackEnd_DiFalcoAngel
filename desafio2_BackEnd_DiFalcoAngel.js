@@ -3,7 +3,7 @@ import fs from 'fs'
 class ProductManager {
     constructor() {
         this.products = [];
-        this.idCounter = 0;// agrego variable , cada vez q se genera un id se incrementa en 1 , evitando duplicar
+        this.idCounter = 0;// agrego variable , cada vez q se genera un id se incrementa en 1 , ademas se verifica el ultimo id
         this.PATH = './products.json';
         
         
@@ -120,7 +120,7 @@ class ProductManager {
       
           return deletedProduct; // Devuelve el producto eliminado
         } else {
-          console.log("No se encontró el producto con el id " + id);
+          console.log("Eliminar : No se encontró el producto con el id " + id);
           return null; // Devuelve null si no se encontró el producto
         }
       }
@@ -189,6 +189,6 @@ const productManager = new ProductManager();// defino productManager
     productManager.updateProduct(1,{stock:6});
     console.log("5🚀Resultado de búsqueda por ID:", productManager.getProductById(1));
     
-    productManager.deleteProduct(1);
+    productManager.deleteProduct(145);
 })();
 
